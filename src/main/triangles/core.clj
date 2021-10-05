@@ -24,13 +24,22 @@
     [A B C]))
 
 (defn abc->A [a b c]
-  (nth (abc->ABC a b c) 0))
+  (Math/acos (/ (- (Math/pow a 2)
+                   (Math/pow b 2)
+                   (Math/pow c 2))
+                (- (* 2 b c)))))
 
 (defn abc->B [a b c]
-  (nth (abc->ABC a b c) 1))
+  (Math/acos (/ (- (Math/pow b 2)
+                   (Math/pow a 2)
+                   (Math/pow c 2))
+                (- (* 2 a c)))))
 
 (defn abc->C [a b c]
-  (nth (abc->ABC a b c) 2))
+  (Math/acos (/ (- (Math/pow c 2)
+                   (Math/pow a 2)
+                   (Math/pow b 2))
+                (- (* 2 a b)))))
 
 (defn abA->B [a b A]
   (Math/asin (/ (* b (Math/sin A)) a)))
